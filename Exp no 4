@@ -1,0 +1,71 @@
+#include<stdio.h>
+#define size 5
+
+int queue[size],front=-1,rear=-1;
+
+void enqueue();
+void dqqueue();
+void display();
+
+int main(){
+	int ch;
+	do{
+		printf("enter choice: \n 1:enqueue\n 2:dqqueue\n 3:display\n 4:exit\n");
+		scanf("%d",&ch);
+		switch(ch){
+		case 1:
+			enqueue();
+			break;
+			case 2:
+				dqqueue();
+				break;
+			case 3:
+				display();
+				break;
+			case 4:
+				break;
+			default:
+				printf("enter valid choice\n");
+		}
+	}while(ch!=4);
+	
+	return 0;
+}
+
+void enqueue(){
+	int x;
+	if(rear==size-1){
+		printf("queue is full\n");
+	}
+	else{
+		rear++;
+		printf("enter the value\n");
+		scanf("%d",&x);
+		queue[rear]=x;
+	}
+}
+
+void dqqueue(){
+	if(front==rear){
+		printf("queue is empty\n");
+		front=-1;
+		rear=-1;
+		
+	}
+	else{
+		front++;
+		printf("the dqqueue value is %d\n", queue[front]);
+	}
+}
+
+void display(){
+	if(front==rear){
+		printf("queue is empty\n");
+	}
+	else{
+		int i;
+		for(i=front+1; i<=rear; i++){
+			printf("the queue is %d\n",queue[i]);
+		}
+	}
+}
